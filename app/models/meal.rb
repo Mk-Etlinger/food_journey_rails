@@ -6,6 +6,8 @@ class Meal < ApplicationRecord
   validates_presence_of :meal_type, :description
   validates :description, length: { maximum: 30 }
 
+  accepts_nested_attributes_for :ingredients
+
   def parse_ingredients(new_ingredients)
     new_ingredients.split(',').each do |ingredient|
       ingredients << Ingredient.find_or_create_by(name: ingredient.strip)
