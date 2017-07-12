@@ -1,0 +1,22 @@
+%h3.title Add a meal
+= form_for @meal  do |f|
+    #radio
+        = f.radio_button :meal_type, 'breakfast'
+        = f.label :meal_type_breakfast, 'Breakfast'
+        = f.radio_button :meal_type, 'lunch'
+        = f.label :meal_type_lunch, 'Lunch'
+        = f.radio_button :meal_type, 'dinner'
+        = f.label :meal_type_dinner, 'Dinner'
+        = f.radio_button :meal_type, 'snack'
+        = f.label :meal_type_snack, 'Snack'
+    #meal_desription
+        = f.label :description, 'Meal Description'
+        = f.text_field :description, placeholder: 'e.g. Omelette'
+    #new_ingredients
+        = f.fields_for :ingredients_attributes, @meal.ingredients.build do |ingredients_fields|
+            = ingredients_fields.label :name, 'New Ingredients'
+            = ingredients_fields.text_field :name, placeholder: 'e.g. egg, ham, cheese'
+    #check_boxes
+        = f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name
+    = f.submit
+  
