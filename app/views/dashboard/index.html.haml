@@ -1,0 +1,13 @@
+%h1.title Welcome #{current_user.email}!
+
+- current_user.meals.all.each do |meal|
+    #dash_box    
+        %h3.meal_link
+            = link_to("#{meal.meal_type + '-' + meal.description}", meal_path) 
+            #dashboard 
+                %a{ class: "dash_link_small", href: url("/meals/#{meal.id}/edit") } edit
+                %a{ class: "dash_link_small", href: url("/meals/#{meal.id}/delete") } delete
+%p
+    = link_to('Add a meal', new_meal_path)
+
+
