@@ -6,14 +6,14 @@ class MealsController < ApplicationController
   end
 
   def create
-    @meal = Meal.new(meal_params)
-    binding.pry
+    @meal = current_user.meals.build(meal_params)
     # @new_ingredients = params[:ingredients][:name]
 
     
 
+    binding.pry
     if @meal.save
-      binding.pry
+      redirect_to dashboard_path
     else
       
     end
