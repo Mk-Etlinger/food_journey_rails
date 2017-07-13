@@ -24,10 +24,13 @@ class MealsController < ApplicationController
   end
 
   def update
-    
+    set_meal
+    if @meal.update(meal_params)
+      redirect_to dashboard_path
+    else
+      redirect_back fallback_location: root_path
+    end
   end
-  
-  
 
   def destroy
     @meal = Meal.find(params[:id])
@@ -36,7 +39,7 @@ class MealsController < ApplicationController
       @meal.destroy
       redirect_to dashboard_path
     else
-      redirect_to :back
+      redirect_back fallback_location: root_path
     end
     
   end
