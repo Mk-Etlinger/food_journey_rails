@@ -1,0 +1,7 @@
+- @symptoms.each do |symptom|
+    #dash_box    
+        %h3.meal_link
+            = symptom.description
+        #links
+            = link_to 'Edit', edit_symptom_path(symptom)
+            = link_to 'Delete', symptom_path(symptom), method: 'DELETE'
