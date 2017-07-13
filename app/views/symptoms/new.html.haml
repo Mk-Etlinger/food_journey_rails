@@ -1,0 +1,7 @@
+= form_for @symptom  do |f|
+    #symptom_desription
+        = f.label :description, 'Symptom Description'
+        = f.text_field :description, placeholder: 'e.g. Headache, bloating'
+    #check_boxes
+        = f.collection_check_boxes :ingredient_symptom_ids, @ingredients, :id, :name
+    = f.submit
