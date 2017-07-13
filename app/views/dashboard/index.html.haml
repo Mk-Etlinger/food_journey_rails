@@ -1,12 +1,13 @@
 %h1.title Welcome #{current_user.email}!
 
-- current_user.meals.all.each do |meal|
+%h2 Recent Meals
+- @meals.each do |meal|
     #dash_box    
         %h3.meal_link
             = link_to("#{meal.meal_type + '-' + meal.description}", meal_path(meal))
         #links
             = link_to 'Edit', edit_meal_path(meal)
-            = link_to 'Delete', meal_path(meal), method: 'DELETE'
-        #dashboard        
+            = link_to 'Delete', meal_path(meal), method: 'DELETE'       
 %p
     = link_to 'Add a meal', new_meal_path
+    = link_to 'Add new symptom', new_symptom_path
