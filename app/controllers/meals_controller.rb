@@ -11,7 +11,7 @@ class MealsController < ApplicationController
     if @meal.save
       redirect_to dashboard_path
     else
-      
+      redirect_back fallback_location: root_path
     end
   end
 
