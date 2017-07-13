@@ -17,14 +17,28 @@ class MealsController < ApplicationController
 
   def show
     set_meal
-  end  
+  end
+
+  def edit
+    set_meal
+  end
+
+  def update
+    
+  end
+  
+  
 
   def destroy
-    set_meal
-    binding.pry
-    @meal.ingredients.delete
-    @meal.destroy
-    redirect_to dashboard_path
+    @meal = Meal.find(params[:id])
+    if @meal.user == current_user
+      @meal.ingredients.clear
+      @meal.destroy
+      redirect_to dashboard_path
+    else
+      redirect_to :back
+    end
+    
   end
 
   private
