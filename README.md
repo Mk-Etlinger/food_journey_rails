@@ -1,24 +1,24 @@
-# README
+# Food Journey
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple app to allow you to keep track of your diet and symptoms.
 
-Things you may want to cover:
+## Requirments
 
-* Ruby version
+* Ruby version: 2.4
+* Configuration: modify files in `config`
+* Database creation: `rake db:migrate`
+* Database initialization: `rake db:seed`
 
-* System dependencies
+## Deployment instructions: 
 
-* Configuration
+1. Fork and clone the repo
+2. Migrate and seed the database
+3. Run `rails s -b 0.0.0.0` or configure rails on the server of your choice
 
-* Database creation
+## Contributions
 
-* Database initialization
+Fork the repo and create pull requests. All are welcome and appreciate.
 
-* How to run the test suite
+## License
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+MIT standard license. See `LICENSE`
