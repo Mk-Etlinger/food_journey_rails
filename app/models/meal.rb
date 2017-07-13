@@ -6,7 +6,6 @@ class Meal < ApplicationRecord
   validates_presence_of :meal_type, :description
   validates :description, length: { maximum: 30 }
 
-  accepts_nested_attributes_for :ingredients, reject_if: lambda {|attributes| attributes['name'].blank?}
  
   def parse_ingredients(new_ingredients)
     new_ingredients.split(',').each do |ingredient|
@@ -18,7 +17,7 @@ class Meal < ApplicationRecord
     # ingredients = [{name: "sausage"}, {name: "eggs"}, {name: "cheese"}]
     # self.ingredients.find_or_create_by
     new_ingredients = ingredients_attributes.dig('0', 'name')
-    
+    binding.pry
     if new_ingredients.include?(',')
       parse_ingredients(new_ingredients)
     elsif !new_ingredients.blank?
