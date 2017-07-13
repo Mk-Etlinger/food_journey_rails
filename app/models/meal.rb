@@ -13,7 +13,7 @@ class Meal < ApplicationRecord
   end
 
   def ingredients_attributes=(ingredients_attributes)
-    return if ingredients_attributes.dig('0', 'name')
+    return if ingredients_attributes.dig('0', 'name').blank?
     new_ingredients = ingredients_attributes.dig('0', 'name')
     if new_ingredients.include?(',')
       parse_ingredients(new_ingredients)
