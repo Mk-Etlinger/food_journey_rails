@@ -3,4 +3,5 @@
     %div
         - @meal.ingredients.each do |ingredient|    
             %p= ingredient.name
-%p 
+#links
+    = link_to('back', dashboard_path)
