@@ -1,6 +1,6 @@
 class Meal < ApplicationRecord
   belongs_to :user
-  has_many :meal_ingredients
+  has_many :meal_ingredients, dependent: :destroy
   has_many :ingredients, through: :meal_ingredients
 
   validates_presence_of :meal_type, :description
@@ -13,12 +13,13 @@ class Meal < ApplicationRecord
   end
 
   def ingredients_attributes=(ingredients_attributes)
-    return if ingredients_attributes.dig('0', 'name').blank?
     new_ingredients = ingredients_attributes.dig('0', 'name')
-    if new_ingredients.include?(',')
+    if new_ingredients.blank?
+      return
+    elsif new_ingredients.include?(',')
       parse_ingredients(new_ingredients)
     else
-      ingredient = Ingredient.find_or_create_by(ingredients_attributes)
+      ingredient = Ingredient.find_or_create_by(ingredients_attributes['0'])
       self.ingredients << ingredient
     end
   end
