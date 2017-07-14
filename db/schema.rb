@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713004506) do
-
-  create_table "ingredient_symptoms", force: :cascade do |t|
-    t.integer "ingredient_id"
-    t.integer "symptom_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ingredient_id"], name: "index_ingredient_symptoms_on_ingredient_id"
-    t.index ["symptom_id"], name: "index_ingredient_symptoms_on_symptom_id"
-  end
+ActiveRecord::Schema.define(version: 20170714135725) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -32,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170713004506) do
     t.integer "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "quantity"
     t.index ["ingredient_id"], name: "index_meal_ingredients_on_ingredient_id"
     t.index ["meal_id"], name: "index_meal_ingredients_on_meal_id"
   end
@@ -44,6 +34,26 @@ ActiveRecord::Schema.define(version: 20170713004506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_meals_on_user_id"
+  end
+
+  create_table "reaction_logs", force: :cascade do |t|
+    t.integer "reaction_id"
+    t.integer "severity"
+    t.string "notes"
+    t.integer "stress_level"
+    t.datetime "occured_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reaction_id"], name: "index_reaction_logs_on_reaction_id"
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "symptom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_reactions_on_ingredient_id"
+    t.index ["symptom_id"], name: "index_reactions_on_symptom_id"
   end
 
   create_table "symptoms", force: :cascade do |t|
