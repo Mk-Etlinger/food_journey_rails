@@ -11,7 +11,7 @@ class MealsController < ApplicationController
     if @meal.save
       redirect_to dashboard_path
     else
-      redirect_back fallback_location: root_path
+      render :new
     end
   end
 
@@ -28,7 +28,7 @@ class MealsController < ApplicationController
     if @meal.update(meal_params)
       redirect_to dashboard_path
     else
-      redirect_back fallback_location: root_path
+      render :edit
     end
   end
 
