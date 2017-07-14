@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'application#index'
   get 'dashboard', to: 'dashboard#index'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :meals
   resources :ingredients
   resources :symptoms
