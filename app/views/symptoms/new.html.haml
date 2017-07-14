@@ -2,6 +2,15 @@
     #symptom_desription
         = f.label :description, 'Symptom Description'
         = f.text_field :description, placeholder: 'e.g. Headache, bloating'
-    #check_boxes
-        = f.collection_check_boxes :ingredient_symptom_ids, @ingredients, :id, :name
+    #new_ingredients
+        = f.fields_for :reaction_log, @reaction_log do |reaction_log_fields|
+            = reaction_log_fields.label :severity, 'Severity'
+            = reaction_log_fields.number_field :severity, in: 1..10, step: 1
+            = reaction_log_fields.label :occured_at, 'Time Elapsed'
+            = reaction_log_fields.number_field :occured_at, in: 1..10, step: 1
+            = reaction_log_fields.label :stress_level, 'stress level'
+            = reaction_log_fields.number_field :stress_level, in: 1..10, step: 1
+            = reaction_log_fields.label :notes, 'Notes'
+            = reaction_log_fields.number_field :notes, in: 1..10, step: 1
+    
     = f.submit
