@@ -10,7 +10,12 @@ class SymptomsController < ApplicationController
   end
   
   def create
-    binding.pry
+    if current_user
+      @symptom = current_user.symptoms.create(symptom_params)
+      redirect_to symptom_path(@symptom)
+    else
+      redirect_to root_path
+    end
   end
 
   private
@@ -20,7 +25,8 @@ class SymptomsController < ApplicationController
   end
   
   def symptom_params
-    params.require(:symptom).permit(:description, :reaction_log[:severity][])
+    # this now does not use the => since it has more then one
+    params.require(:symptom).permit(:description, reactions_attributes: [:severity, :stress_level, :notes, :ingredient_id])
   end
   
 end

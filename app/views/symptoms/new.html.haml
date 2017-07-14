@@ -3,14 +3,13 @@
         = f.label :description, 'Symptom Description'
         = f.text_field :description, placeholder: 'e.g. Headache, bloating'
     #new_ingredients
-        = f.fields_for :reaction_log, @reaction_log do |reaction_log_fields|
-            = reaction_log_fields.label :severity, 'Severity'
-            = reaction_log_fields.number_field :severity, in: 1..10, step: 1
-            = reaction_log_fields.label :occured_at, 'Time Elapsed'
-            = reaction_log_fields.number_field :occured_at, in: 1..10, step: 1
-            = reaction_log_fields.label :stress_level, 'stress level'
-            = reaction_log_fields.number_field :stress_level, in: 1..10, step: 1
-            = reaction_log_fields.label :notes, 'Notes'
-            = reaction_log_fields.number_field :notes, in: 1..10, step: 1
+        = f.fields_for :reactions, @symptom.reactions.build do |reaction_fields|
+            = reaction_fields.collection_select :ingredient_id, Ingredient.all, :id, :name
+            = reaction_fields.label :severity, 'Severity'
+            = reaction_fields.number_field :severity, in: 1..10, step: 1
+            = reaction_fields.label :stress_level, 'stress level'
+            = reaction_fields.number_field :stress_level, in: 1..10, step: 1
+            = reaction_fields.label :notes, 'Notes'
+            = reaction_fields.number_field :notes, in: 1..10, step: 1
     
     = f.submit
