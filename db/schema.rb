@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714161739) do
+ActiveRecord::Schema.define(version: 20170714232619) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -38,9 +38,6 @@ ActiveRecord::Schema.define(version: 20170714161739) do
 
   create_table "reaction_logs", force: :cascade do |t|
     t.integer "reaction_id"
-    t.integer "severity"
-    t.string "notes"
-    t.integer "stress_level"
     t.datetime "occured_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +49,9 @@ ActiveRecord::Schema.define(version: 20170714161739) do
     t.integer "symptom_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "severity"
+    t.integer "stress_level"
+    t.text "notes"
     t.index ["ingredient_id"], name: "index_reactions_on_ingredient_id"
     t.index ["symptom_id"], name: "index_reactions_on_symptom_id"
   end
