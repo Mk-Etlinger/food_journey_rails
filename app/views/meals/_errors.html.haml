@@ -1,0 +1,5 @@
+- if @meal.errors.any?
+    #error_explanation
+        %ul
+            - @meal.errors.full_messages.each do |msg|
+                %li= msg
