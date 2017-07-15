@@ -1,0 +1,12 @@
+%h2.title= @symptom.description
+#details
+    %p Severity: #{@reaction.severity}
+    %p Stress Level: #{@reaction.stress_level}
+    %p Notes: #{@reaction.notes}
+#show_box
+    %h3 Possible triggers:
+    #list
+        - @symptom.ingredients.each do |ingredient|    
+            %p= ingredient.name
+#links
+    = link_to('back', dashboard_path)
