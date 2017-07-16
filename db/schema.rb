@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714232619) do
+ActiveRecord::Schema.define(version: 20170714233048) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20170714232619) do
 
   create_table "reaction_logs", force: :cascade do |t|
     t.integer "reaction_id"
-    t.datetime "occured_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "occurred_at"
     t.index ["reaction_id"], name: "index_reaction_logs_on_reaction_id"
   end
 

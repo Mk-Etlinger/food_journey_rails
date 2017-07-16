@@ -5,6 +5,10 @@ class Meal < ApplicationRecord
 
   validates_presence_of :meal_type, :description
   validates :description, length: { maximum: 30 }
+
+  scope :for_user, lambda { |user|
+    where(:user_id => user.id)
+  } 
  
   def parse_ingredients(new_ingredients)
     new_ingredients.split(',').each do |ingredient|
