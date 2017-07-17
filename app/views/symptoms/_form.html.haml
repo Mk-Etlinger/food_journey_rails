@@ -1,0 +1,21 @@
+= form_for @symptom  do |f|
+    #symptom_desription
+        = f.label :description, 'Symptom Description'
+        = f.text_field :description, placeholder: 'e.g. Headache, bloating'
+    #new_ingredients
+        = f.fields_for :reactions, @symptom.reactions.build do |reaction_fields|
+            = reaction_fields.label :severity, 'Severity'
+            = reaction_fields.number_field :severity, in: 1..10, step: 1
+            = reaction_fields.label :stress_level, 'stress level'
+            = reaction_fields.number_field :stress_level, in: 1..10, step: 1
+            = reaction_fields.label :notes, 'Notes'
+            = reaction_fields.text_field :notes
+            
+        = f.fields_for :ingredients, @symptom.ingredients.build do |ingredient_fields|
+            = ingredient_fields.hidden_field :current_user_id, value: current_user.id
+            
+        = f.fields_for :reaction_logs, @reaction_log do |reaction_log_fields|
+            = reaction_log_fields.label :occurred_at, 'Time Elapsed'
+            = reaction_log_fields.number_field :occurred_at, in: 1..10
+            
+    = f.submit
