@@ -2,6 +2,10 @@ class MealsController < ApplicationController
   before_action :user_signed_in?, :authenticate_user!
   before_action :set_meal, only: [:edit, :update, :destroy]
 
+  def index
+    @meals = current_user.meals
+  end
+
   def new
     @meal = Meal.new
     @ingredients = Ingredient.all
