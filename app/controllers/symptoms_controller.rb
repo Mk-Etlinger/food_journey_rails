@@ -57,7 +57,7 @@ class SymptomsController < ApplicationController
    def symptom_params
     params.require(:symptom).permit(:description,
                                     ingredients_attributes: [:current_user_id, :hours_elapsed],
-                                    reactions_attributes: %i[severity stress_level notes],
+                                    reactions_attributes: [:severity, :stress_level, :notes],
                                     reaction_logs: [:occurred_at]
                                     )
   end
