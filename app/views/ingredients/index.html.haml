@@ -1,0 +1,7 @@
+%h2.title= @meal.description
+#show_box
+    %div
+        - @meal.ingredients.each do |ingredient|    
+            %p= ingredient.name
+#links
+    = link_to('back', dashboard_path)
