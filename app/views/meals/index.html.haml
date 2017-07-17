@@ -1,0 +1,7 @@
+- @meals.each do |meal|
+    #dash_box    
+        %h3.meal_link
+            = link_to "#{meal.description}", meal_ingredients_path(meal)
+        #links
+            = link_to 'Edit', edit_meal_path(meal)
+            = link_to 'Delete', meal_path(meal), method: 'DELETE'
