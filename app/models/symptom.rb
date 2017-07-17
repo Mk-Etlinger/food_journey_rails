@@ -7,7 +7,6 @@ class Symptom < ApplicationRecord
   def reactions_attributes=(reaction_attributes)
     reaction_attributes.values.each do |attribute|
       self.reactions.each do |reaction|
-        binding.pry
         reaction.update(attribute)
       end
     end
