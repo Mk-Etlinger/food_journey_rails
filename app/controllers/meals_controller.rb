@@ -1,4 +1,6 @@
 class MealsController < ApplicationController
+  before_action :user_signed_in?, :authenticate_user!
+  before_action :set_meal, only: [:edit, :update, :destroy]
 
   def new
     @meal = Meal.new
@@ -15,33 +17,30 @@ class MealsController < ApplicationController
     end
   end
 
-  def show
-    set_meal
-  end
-
   def edit
-    set_meal
+    if user_authorized?
+      render :edit
+    else
+      redirect_to dashboard_path
+    end
   end
 
   def update
-    set_meal
-    if @meal.update(meal_params)
+    if user_authorized? && @meal.update(meal_params)
       redirect_to dashboard_path
     else
       render :edit
     end
   end
-
+  # test destroy to make sure ingredients remain in db(do associations remain?)
   def destroy
-    @meal = Meal.find(params[:id])
-    if @meal.user == current_user
+    if user_authorized?
       @meal.ingredients.clear
       @meal.destroy
       redirect_to dashboard_path
     else
       redirect_back fallback_location: root_path
     end
-    
   end
 
   private
@@ -53,5 +52,9 @@ class MealsController < ApplicationController
   def meal_params
     params.require(:meal).permit(:meal_type, :description, ingredient_ids: [], ingredients_attributes: [:name])
   end
-  
+
+  def user_authorized?
+    @meal.user == current_user
+  end
+
 end
