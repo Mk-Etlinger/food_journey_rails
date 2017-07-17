@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   def index
     render "landing/index"
   end
+
+  # def set_instance_variable
+  #   controller_name = params['controller']
+  #   controller_name.chop!
+  #   model_name = controller_name.capitalize
+  #   instance_variable_set('@' + controller_name, model_name.find_by(id: params[:id]))
+  # end
 end
