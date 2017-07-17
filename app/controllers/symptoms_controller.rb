@@ -3,7 +3,7 @@ class SymptomsController < ApplicationController
   before_action :set_symptom, only: [:show, :edit, :update, :destroy]
 
   def index
-    @symptoms = Symptom.all
+    @symptoms = current_user.symptoms
   end
   
   def new
