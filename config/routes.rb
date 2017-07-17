@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :symptoms
 
-  get '/users/:id/meals/new', to: 'meals#new'
+  get '/users/:id/meals/new', to: 'meals#new', as: 'nested_new_meal'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
