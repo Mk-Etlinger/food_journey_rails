@@ -1,6 +1,6 @@
 %h1.title Welcome #{current_user.email}!
 %p
-    = link_to 'Add a meal', new_meal_path
+    = link_to 'Add a meal', nested_new_meal_path(current_user)
     = link_to 'Add new symptom', new_symptom_path
 %h2 Recent Meals:
 - @meals.each do |meal|
