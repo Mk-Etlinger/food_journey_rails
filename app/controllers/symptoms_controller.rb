@@ -12,7 +12,7 @@ class SymptomsController < ApplicationController
   end
   
   def create
-    @symptom = current_user.symptoms.create(symptom_params)
+    @symptom = current_user.symptoms.build(symptom_params)
 
     if @symptom.save
       redirect_to symptom_path(@symptom)
@@ -31,7 +31,6 @@ class SymptomsController < ApplicationController
   end
 
   def update
-    binding.pry
     if user_authorized? && @symptom.update(symptom_params)
       redirect_to dashboard_path
     else
@@ -41,7 +40,6 @@ class SymptomsController < ApplicationController
   # test destroy to make sure ingredients remain in db(do associations remain?)
   def destroy
     if user_authorized?
-      binding.pry
       @symptom.ingredients.clear
       @symptom.destroy
       redirect_to dashboard_path
@@ -56,8 +54,12 @@ class SymptomsController < ApplicationController
     @symptom = Symptom.find_by(id: params[:id])
   end
 
-  def symptom_params
-    params.require(:symptom).permit(:description, ingredients_attributes: [:current_user_id], reactions_attributes: [:severity, :stress_level, :notes], reaction_logs: [:occurred_at])
+   def symptom_params
+    params.require(:symptom).permit(:description,
+                                    ingredients_attributes: [:current_user_id, :hours_elapsed],
+                                    reactions_attributes: %i[severity stress_level notes],
+                                    reaction_logs: [:occurred_at]
+                                    )
   end
 
   def user_authorized?
