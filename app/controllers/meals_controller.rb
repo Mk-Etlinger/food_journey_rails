@@ -36,7 +36,7 @@ class MealsController < ApplicationController
       render :edit
     end
   end
-  # test destroy to make sure ingredients remain in db(do associations remain?)
+  
   def destroy
     if user_authorized?
       @meal.ingredients.clear
@@ -54,7 +54,9 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:meal_type, :description, ingredient_ids: [], ingredients_attributes: [:name])
+    params.require(:meal).permit(:meal_type, 
+                                 :description, ingredient_ids: [], 
+                                 ingredients_attributes: [:name])
   end
 
   def user_authorized?
