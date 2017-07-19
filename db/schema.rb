@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714233048) do
+ActiveRecord::Schema.define(version: 20170719170406) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170714233048) do
     t.integer "severity"
     t.integer "stress_level"
     t.text "notes"
+    t.datetime "occurred_at"
     t.index ["ingredient_id"], name: "index_reactions_on_ingredient_id"
     t.index ["symptom_id"], name: "index_reactions_on_symptom_id"
   end
@@ -80,7 +81,9 @@ ActiveRecord::Schema.define(version: 20170714233048) do
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end
