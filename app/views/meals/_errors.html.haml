@@ -3,3 +3,6 @@
         %ul
             - @meal.errors.full_messages.each do |msg|
                 %li= msg
+- if flash[:alert]
+    #error_explanation
+        = flash[:alert]
