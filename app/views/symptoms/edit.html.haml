@@ -15,9 +15,9 @@
         = f.fields_for :ingredients, @symptom.ingredients.build do |ingredient_fields|
             = ingredient_fields.hidden_field :current_user_id, value: current_user.id
             
-        = f.fields_for :reaction_logs, @reaction_logs do |reaction_log_fields|
-            = reaction_log_fields.label :occurred_at, 'Time Elapsed'
-            = reaction_log_fields.number_field :occurred_at, in: 1..10, step: 0.5
+        -# = f.fields_for :reaction_logs, @reaction_logs do |reaction_log_fields|
+        -#     = reaction_log_fields.label :occurred_at, 'Time Elapsed'
+        -#     = reaction_log_fields.number_field :occurred_at, in: 1..10, step: 0.5
             
     = f.submit
 = link_to 'back', dashboard_path
