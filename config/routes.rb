@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :meals do
     resources :ingredients, only: [:index]
   end
-  
+
   resources :symptoms
 
   get '/users/:id/meals/new', to: 'meals#new', as: 'nested_new_meal'
