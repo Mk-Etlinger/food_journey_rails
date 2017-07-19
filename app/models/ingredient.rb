@@ -7,5 +7,5 @@ class Ingredient < ApplicationRecord
   validates_presence_of :name
   validates :name, format: { with: /[a-zA-Z,]/ }
 
-  attr_accessor :current_user_id
+  attr_accessor :current_user_id, :occurred_at
 end
