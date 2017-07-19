@@ -7,7 +7,7 @@ class Meal < ApplicationRecord
   validates :description, length: { maximum: 30 }
 
   scope :for_user, ->(user) { where(:user_id => user.id) }
-  scope :created_after, ->(time) { where("created_at > ?", time) }
+  scope :created_within, ->(time, occurred_at) { where("created_at > ? AND created_at < ?", time, occurred_at) }
  
   def parse_ingredients(new_ingredients)
     new_ingredients.split(',').each do |ingredient|
