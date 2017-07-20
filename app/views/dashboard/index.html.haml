@@ -3,18 +3,6 @@
     = link_to 'Add a meal', nested_new_meal_path(current_user)
     = link_to 'Add new symptom', new_symptom_path
 %h2 Recent Meals:
-- @meals.each do |meal|
-    #dash_box    
-        %h3.meal_link
-            = link_to("#{meal.meal_type + '-' + meal.description}", meal_ingredients_path(meal))
-        #links
-            = link_to 'Edit', edit_meal_path(meal)
-            = link_to 'Delete', meal_path(meal), method: 'DELETE'
+= render partial: 'meal_display', locals: { meals: @meals} 
 %h2 Recent Symptoms:
-- @symptoms.each do |symptom|
-    #dash_box    
-        %h3.symptom_link
-            = link_to("#{symptom.description}", symptom_path(symptom))
-        #links
-            = link_to 'Edit', edit_symptom_path(symptom)
-            = link_to 'Delete', symptom_path(symptom), method: 'DELETE'            
+= render partial: 'symptom_display', locals: { symptoms: @symptoms} 
