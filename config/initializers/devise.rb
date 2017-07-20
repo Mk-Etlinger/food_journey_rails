@@ -251,7 +251,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], 
-                             ENV['FACEBOOK_SECRET']
+                             ENV['FACEBOOK_SECRET'],
+                             callback_url: "http://localhost:3000/users/auth/facebook/callback"
                             #  scope: 'email', info_fields: 'email,name',
                             #  callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
