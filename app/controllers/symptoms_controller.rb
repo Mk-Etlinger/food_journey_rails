@@ -26,8 +26,6 @@ class SymptomsController < ApplicationController
   end
 
   def edit
-    set_symptom
-    @reaction_log = @symptom.reaction_logs.first
   end
 
   def update
