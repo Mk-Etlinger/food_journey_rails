@@ -1,0 +1,164 @@
+* {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200; 
+}
+
+#nav {
+    background-color: black;
+    width: 100%;
+    border: 1px outset black;
+}
+
+#nav ul a {
+    display: inline-block;
+    color: white;
+    list-style-type: none;
+}
+
+body {
+    text-align: left;
+    background-color: #e1eef7;
+    margin: 0;
+}
+
+body #landing {
+    background-size: cover;
+    background-image: url("../images/food_journey_landing_photo_large.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+#landing #text {
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#landing #text h1 {
+    text-shadow: 2px 1px 2px black;
+}
+
+#landing #text h3 {
+    text-shadow: .5px .5px 1px black;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 3.5em;     
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 3em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+p {
+    margin: 5px;
+    padding: 5px;    
+}
+
+label {
+    letter-spacing: 1px;
+}
+
+a {
+    margin: 5px;
+    padding: 5px;
+}
+
+input {
+    background-color: white;
+    letter-spacing: 1px;
+    font-size: 1em;
+}
+
+.dash_link_small {
+    font-size: .5em;
+}
+
+#dash_box h3 {
+    background-color: white;
+    border: 3px groove #ddd;
+    margin: 10px;
+    width: 60%;
+}
+
+.title {
+    margin-left: 15%;
+    margin-right: 30%;
+
+}
+
+h3.meal_link a {
+    font-weight: 100;
+}
+
+address { 
+    background-color: #484a4c;
+    text-align: center;
+    color: white;
+    margin-top: 30%;
+}
+
+#copyright {
+    letter-spacing: 1px;
+    height: 35px;
+}
+
+p a.button {
+    text-decoration: none;
+    border: 1px outset grey;
+    background-color: lightgrey;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border: 3px groove #ddd;
+    margin: 10px;
+    width: 60%;
+}
+
+#show_box div {
+    background-color: white;
+    border: 3px groove #ddd;
+    margin: 10px;
+    width: 60%;
+}
+
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+input[type=radio] {
+    display:none; 
+    margin:10px;
+}
+
+/*
+  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+  Add some margin, padding to label
+*/
+input[type=radio] + label {
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    background-color: lightgrey;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/*
+ Change background color for label next to checked radio button
+ to make it look like highlighted button
+*/
+input[type=radio]:checked + label { 
+    background-image: none;
+    background-color: grey;
+}
