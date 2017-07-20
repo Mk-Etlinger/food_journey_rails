@@ -3,6 +3,7 @@
         %ul
             - @meal.errors.full_messages.each do |msg|
                 %li= msg
-- if flash[:alert]
+- clear_already_logged_in_alert
+- unless flash[:alert].empty?
     #error_explanation
         = flash[:alert]
