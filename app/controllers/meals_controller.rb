@@ -8,7 +8,6 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @ingredients = Ingredient.all
   end
 
   def create
@@ -55,12 +54,12 @@ class MealsController < ApplicationController
 
   def meal_params
     params.require(:meal).permit(:meal_type, 
-                                 :description, ingredient_ids: [], 
+                                 :description, 
+                                 ingredient_ids: [],
                                  ingredients_attributes: [:name])
   end
 
   def user_authorized?
     @meal.user == current_user
   end
-
 end
