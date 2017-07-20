@@ -17,9 +17,9 @@ class Meal < ApplicationRecord
 
   def ingredients_attributes=(ingredients_attributes)
     new_ingredients = ingredients_attributes.dig('0', 'name')
-    if new_ingredients.blank?
-      return
-    elsif new_ingredients.include?(',')
+    return if new_ingredients.blank?
+
+    if new_ingredients.include?(',')
       parse_ingredients(new_ingredients)
     else
       ingredient = Ingredient.find_or_create_by(ingredients_attributes['0'])
