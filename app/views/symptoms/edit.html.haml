@@ -3,14 +3,20 @@
     #symptom_desription
                  
         = f.label :description, 'Symptom Description'
+        %br
         = f.text_field :description, placeholder: 'e.g. Headache, bloating'
     #new_ingredients
         = f.fields_for :reactions, @symptom.reactions.first do |reaction_fields|
             = reaction_fields.label :severity, 'Severity'
+            %br
             = reaction_fields.number_field :severity, in: 1..10, step: 1
+            %br
             = reaction_fields.label :stress_level, 'stress level'
+            %br
             = reaction_fields.number_field :stress_level, in: 1..10, step: 1
+            %br
             = reaction_fields.label :notes, 'Notes'
+            %br
             = reaction_fields.text_area :notes
             
         = f.fields_for :ingredients, @symptom.ingredients.build do |ingredient_fields|
