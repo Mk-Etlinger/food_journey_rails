@@ -8,10 +8,10 @@ class Meal < ApplicationRecord
 
   scope :for_user, ->(user) { where(:user_id => user.id) }
   scope :created_within, ->(time, occurred_at) { where("created_at > ? AND created_at < ?", time, occurred_at) }
- 
+
   def parse_ingredients(new_ingredients)
     new_ingredients.split(',').each do |ingredient|
-      ingredients << Ingredient.find_or_create_by(name: ingredient.strip.downcase)
+      self.ingredients << Ingredient.find_or_create_by(name: ingredient.strip.downcase)
     end
   end
 
