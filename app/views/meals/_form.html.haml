@@ -16,5 +16,6 @@
             = ingredients_fields.label :name, 'New Ingredients'
             = ingredients_fields.text_field :name, placeholder: 'e.g. egg, ham, cheese'
     #check_boxes
+        Existing Ingredients:
         = f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name
     = f.submit
