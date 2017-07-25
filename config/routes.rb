@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :ingredients, only: [:index]
   end
 
+  get '/ingredients/safe', to: 'ingredients#safe'
+  post '/ingredients/mark_safe', to: 'ingredients#mark_safe'
   resources :symptoms
 
   get '/users/:id/meals/new', to: 'meals#new', as: 'nested_new_meal'
