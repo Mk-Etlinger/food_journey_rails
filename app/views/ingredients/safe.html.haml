@@ -1,0 +1,5 @@
+= form_for @ingredient, url: ingredients_mark_safe_path do |f|
+    #check_boxes
+        %h4 Choose an ingredient to mark safe:
+        = f.collection_check_boxes :id, Ingredient.all, :id, :name, include_hidden: false
+    = f.submit "Mark Safe"
