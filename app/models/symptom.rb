@@ -20,7 +20,7 @@ class Symptom < ApplicationRecord
     set_meals_within_three_days
     @meals.each do |meal|
       meal.ingredients.each do |ingredient|
-        self.ingredients << ingredient
+        self.ingredients << ingredient unless ingredient.safe == true
       end
     end
   end
