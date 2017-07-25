@@ -12,7 +12,7 @@ class Ingredient < ApplicationRecord
   attr_accessor :current_user_id, :occurred_at
 
   def update_reactions
-    self.reactions.clear
+    self.symptoms.clear
   end
   
 end
