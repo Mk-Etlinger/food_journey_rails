@@ -14,6 +14,7 @@ class IngredientsController < ApplicationController
     safe_ingredients = ingredient_params[:id]
     @ingredients = Ingredient.where(id: safe_ingredients)
     @ingredients.each { |ingredient| ingredient.update(safe: true) }
+    redirect_to dashboard_path
   end
 
   private
