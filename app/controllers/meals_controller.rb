@@ -3,7 +3,7 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:edit, :update, :destroy]
 
   def index
-    @meals = current_user.meals
+    @meals = current_user.meals.order(created_at: :desc)
   end
 
   def new
@@ -35,7 +35,7 @@ class MealsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     if user_authorized?
       @meal.ingredients.clear
@@ -53,8 +53,8 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:meal_type, 
-                                 :description, 
+    params.require(:meal).permit(:meal_type,
+                                 :description,
                                  ingredient_ids: [],
                                  ingredients_attributes: [:name])
   end
