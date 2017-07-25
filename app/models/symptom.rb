@@ -26,9 +26,8 @@ class Symptom < ApplicationRecord
   end
 
   def reaction_logs=(attributes)
-    attributes['occurred_at'] = @occurred_at
     self.reactions.each do |reaction|
-      reaction.reaction_logs.create(attributes)
+      reaction.reaction_logs.create(occurred_at: @occurred_at)
     end
   end
 
