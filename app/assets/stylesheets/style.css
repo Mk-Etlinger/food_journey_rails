@@ -23,7 +23,7 @@ body {
 
 body #landing {
     background-size: cover;
-    background-image: url("../images/food_journey_landing_photo_large.jpg");
+    background-image: url("food_journey_landing_photo_large.jpg");
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;

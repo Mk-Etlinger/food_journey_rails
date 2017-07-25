@@ -1,6 +1,6 @@
 #nav
     %ul
-        = link_to( image_tag('/Users/Mikie/Development/Projects/food_journey_rails/app/assets/images/food_journey_white.png'), root_path)
+        = link_to( image_tag('food_journey_white.png'), root_path)
         - if user_signed_in?
             = link_to 'Dashboard', dashboard_path(current_user)
             = link_to 'Sign Out', destroy_user_session_path, method: 'DELETE'
