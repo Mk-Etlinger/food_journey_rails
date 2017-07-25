@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     render "landing/index"
   end
 
+  # this is an attempt to metaprogram the instance var. based on controller
+
   # def set_instance_variable
   #   controller_name = params['controller']
   #   controller_name.chop!
